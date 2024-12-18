@@ -1,7 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { useDebounce } from "use-debounce";
-import  Modal  from "./modal";
 import CameraModal from "./camera-modal";
 
 const MemeGenerator = () => {
@@ -140,7 +139,7 @@ const MemeGenerator = () => {
         )}
       
         <canvas ref={canvasRef} className="hidden" />
-        {memeImage && <img src={memeImage} className="max-h-96" />}
+        {memeImage && <img alt="meme image" src={memeImage} className="max-h-96" />}
       </div>
     </>
   );

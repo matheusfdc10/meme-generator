@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Modal from "./modal";
+import Image from "next/image";
 
 interface Props {
     isOpen: boolean;
@@ -87,7 +88,7 @@ const CameraModal = ({
         <Modal isOpen={isOpen} onClose={stopCamera}>
             <video ref={videoRef} autoPlay playsInline className="h-[336px]" style={{ display: image ? 'none' : 'block'}}/>
             <canvas ref={cameraCanvasRef} className="hidden"></canvas>
-            {image && <img src={image} className="h-[336px]" />}
+            {image && <Image alt="Photo" src={image} className="h-[336px]" />}
             {isCameraActive && (
                 <div className="w-full flex justify-end gap-4 mt-4">
                     {image ? (
