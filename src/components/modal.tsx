@@ -30,7 +30,7 @@ const Modal = ({
     if (isOpen) {
         return (
             <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm overflow-y-auto grid items-center">
-                <div className="relative w-full h-auto max-w-lg mx-auto bg-zinc-100 rounded-lg shadow-lg p-6 sm:p-8 my-8">
+                <div className="relative w-full h-auto max-w-lg mx-auto bg-zinc-100 rounded-lg shadow-lg p-8 my-8">
                     <button
                     onClick={() => onClose(false)}
                     className="absolute top-2 right-3 text-gray-500 hover:text-gray-800 text-xl"
@@ -38,7 +38,7 @@ const Modal = ({
                         ✖
                     </button>
     
-                    <div>
+                    <div className="relative">
                         {children}
                     </div>
                 </div>

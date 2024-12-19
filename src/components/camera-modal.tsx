@@ -86,23 +86,26 @@ const CameraModal = ({
 
     return (
         <Modal isOpen={isOpen} onClose={stopCamera}>
-            <video ref={videoRef} autoPlay playsInline className="h-[336px]" style={{ display: image ? 'none' : 'block'}}/>
-            <canvas ref={cameraCanvasRef} className="hidden"></canvas>
-            {image && <Image alt="Photo" src={image} className="h-[336px]" />}
+            <div className="relative flex justify-center items-center text-center">
+                {!isCameraActive && <p className="text-center">Carregando...</p>}
+                <video ref={videoRef} autoPlay playsInline style={{ display: image || !isCameraActive ? 'none' : 'block'}}/>
+                <canvas ref={cameraCanvasRef} className="hidden"></canvas>
+                {image && <Image alt="Photo" src={image} width={500} height={500} className="object-contain"  />}
+            </div>
             {isCameraActive && (
-                <div className="w-full flex justify-end gap-4 mt-4">
+                <div className="w-full flex justify-end flex-wrap gap-4 mt-4">
                     {image ? (
-                        <button onClick={takeAnotherPhoto} className="px-4 py-2 bg-green-500 text-white rounded origin-left">
-                            Tirar outra foto
-                        </button>
+                        <>
+                            <button onClick={takeAnotherPhoto} className="px-4 py-2 bg-green-500 text-white rounded">
+                                Tirar outra foto
+                            </button>
+                            <button onClick={selectPhoto} className="px-4 py-2 bg-green-500 text-white rounded">
+                                Selecinar
+                            </button>
+                        </>
                     ) : (
-                        <button onClick={capturePhoto} className="px-4 py-2 bg-green-500 text-white rounded origin-left">
+                        <button onClick={capturePhoto} className="px-4 py-2 bg-green-500 text-white rounded">
                             Tirar foto
-                        </button>
-                    )}
-                    {image && (
-                        <button onClick={selectPhoto} className="px-4 py-2 bg-green-500 text-white rounded origin-left">
-                            Selecinar
                         </button>
                     )}
                 </div>
